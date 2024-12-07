@@ -27,6 +27,8 @@ const excludedText: string[] = [
   'selfpromosaturday',
   'deviantart',
   'promosky',
+  'SELF PROMO SATURDAY',
+  'selfpromostaurday',
 ]
 
 const matchPatterns: RegExp[] = [
