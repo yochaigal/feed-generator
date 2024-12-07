@@ -98,7 +98,11 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
         const no_bad_urls = !prohibitedUrls.some((url) => txt.includes(url))
         const no_excluded_words = !excludedText.some((term) => txt.includes(term))
         const found_osr_terms = matchPatterns.some((pattern) => pattern.test(txt))
-        return no_bad_urls && no_excluded_words && found_osr_terms
+
+        // filter out posts that look to lists (over 10 short lines of text)
+        const no_lists = txt.split('\n').filter((s) => s && s.split(/\s+/).length < 5).length < 10
+
+        return no_bad_urls && no_excluded_words && no_lists && found_osr_terms
       })
       .map((create) => {
         console.log(`Found post by ${create.author}: ${create.record.text}`)
