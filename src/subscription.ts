@@ -23,10 +23,10 @@ const excludedText: string[] = [
   'nft',
   'osréalacha',
   'pathfinder',
-  'SELF PROMO SATURDAY',
   'promosky',
   'self-promo',
-  'selfpromostaurday',
+  'selfpromosaturday',
+  'SELF PROMO SATURDAY',
   'trump',
 ]
 
