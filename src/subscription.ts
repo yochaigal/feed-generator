@@ -7,7 +7,9 @@ import fs from 'fs'
 
 const excludedText: string[] = [
   '1 like',
+  '4chan',
   '5 faves',
+  '8chan',
   'TTRPGRising',
   'about me',
   'critical role',
@@ -22,11 +24,13 @@ const excludedText: string[] = [
   'intropost',
   'nft',
   'osréalacha',
+  'OSRFood',
   'pathfinder',
   'promosky',
   'self-promo',
   'selfpromosaturday',
   'SELF PROMO SATURDAY',
+  'Spicy take',
   'trump',
 ]
 
