@@ -31,6 +31,7 @@ const excludedText: string[] = [
   'selfpromosaturday',
   'SELF PROMO SATURDAY',
   'Spicy take',
+  'tag yourself',
   'trump',
 ]
 
@@ -69,7 +70,7 @@ const matchPatterns: RegExp[] = [
   // OSR terms that get pulled in for video game discussion too often
   /(^|\s)#?(ad&d|adnd)(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
   /(^|\s)#?osr(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
-  /(^|\s)old school (rpg|roleplaying)(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
+//  /(^|\s)old school (rpg|roleplaying)(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
 ]
 
 const prohibitedUrls: string[] = [
