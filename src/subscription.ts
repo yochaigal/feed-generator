@@ -33,6 +33,7 @@ const excludedText: string[] = [
   'Spicy take',
   'tag yourself',
   'trump',
+  'wotc',
 ]
 
 const matchPatterns: RegExp[] = [
@@ -68,7 +69,7 @@ const matchPatterns: RegExp[] = [
   /(^|\s)into the odd\s*RPG(\s|\W|$)/im,
 
   // OSR terms that get pulled in for video game discussion too often
-  /(^|\s)#?(ad&d|adnd)(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
+//  /(^|\s)#?(ad&d|adnd)(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
   /(^|\s)#?osr(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
 //  /(^|\s)old school (rpg|roleplaying)(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
 ]
