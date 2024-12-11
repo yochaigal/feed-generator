@@ -49,6 +49,8 @@ const matchPatterns: RegExp[] = [
   /(^|\s)#?Dolmenwood(\s|\W|$)/im,
   /(^|\s)#?mausritter(\s|\W|$)/im,
   /(^|\s)#?bastionland(\s|\W|$)/im,
+  /(^|\s)#?b\/x(\s|\W|$)/im,
+  /(^|\s)#?basic\/expert(\s|\W|$)/im,
 
   // OSR games
   /(^|\s)Classic Traveller(\s|\W|$)/im,
