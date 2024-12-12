@@ -46,7 +46,6 @@ const matchPatterns: RegExp[] = [
   /(^|\s)#?DCCRPG(\s|\W|$)/im,
   /(^|\s)#?MCCRPG(\s|\W|$)/im,
   /(^|\s)#?bfrpg(\s|\W|$)/im,
-  /(^|\s)#?Dolmenwood(\s|\W|$)/im,
   /(^|\s)#?mausritter(\s|\W|$)/im,
   /(^|\s)#?bastionland(\s|\W|$)/im,
   /(^|\s)#?b\/x(\s|\W|$)/im,
@@ -107,8 +106,8 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
         const no_excluded_words = !excludedText.some((term) => txt.includes(term))
         const found_osr_terms = matchPatterns.some((pattern) => pattern.test(txt))
 
-        // filter out posts that look to lists (over 10 short lines of text)
-        const no_lists = txt.split('\n').filter((s) => s && s.split(/\s+/).length < 5).length < 10
+        // filter out posts that look to lists (over 5 short lines of text)
+        const no_lists = txt.split('\n').filter((s) => s && s.split(/\s+/).length < 5).length < 5
 
         return no_bad_urls && no_excluded_words && no_lists && found_osr_terms
       })
