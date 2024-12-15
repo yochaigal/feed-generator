@@ -70,9 +70,7 @@ const matchPatterns: RegExp[] = [
   /(^|\s)into the odd\s*RPG(\s|\W|$)/im,
 
   // OSR terms that get pulled in for video game discussion too often
-//  /(^|\s)#?(ad&d|adnd)(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
   /(^|\s)#?osr(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
-//  /(^|\s)old school (rpg|roleplaying)(\s|\W|$)(?!.*(computer|video game|pc|console))/im,
 ]
 
 const prohibitedUrls: string[] = [
@@ -102,18 +100,29 @@ export class FirehoseSubscription extends FirehoseSubscriptionBase {
       .filter((create) => !bannedUsers.includes(create.author))
       .filter((create) => {
         const txt = create.record.text.toLowerCase()
+
         const no_bad_urls = !prohibitedUrls.some((url) => txt.includes(url))
         const no_excluded_words = !excludedText.some((term) => txt.includes(term))
         const found_osr_terms = matchPatterns.some((pattern) => pattern.test(txt))
 
-        // filter out posts that look to lists (over 5 short lines of text)
-        const no_lists = txt.split('\n').filter((s) => s && s.split(/\s+/).length < 5).length < 5
+        // Check for list-like content
+        const lines = txt.split('\n')
+        const shortLinesCount = lines.filter((line) => {
+          const wordCount = line.trim().split(/\s+/).length
+          return line.trim() !== '' && wordCount < 5
+        }).length
+        const no_lists = shortLinesCount < 5
 
-        return no_bad_urls && no_excluded_words && no_lists && found_osr_terms
+        // Check if the post is only hashtags
+        const tokens = txt.trim().split(/\s+/)
+        const onlyHashtags = tokens.length > 0 && tokens.every((token) =>
+          /^#[\p{L}\p{N}_]+$/u.test(token)
+        )
+
+        return no_bad_urls && no_excluded_words && no_lists && found_osr_terms && !onlyHashtags
       })
       .map((create) => {
         console.log(`Found post by ${create.author}: ${create.record.text}`)
-
         return {
           uri: create.uri,
           cid: create.cid,
