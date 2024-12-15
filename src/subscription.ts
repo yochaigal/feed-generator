@@ -25,6 +25,7 @@ const excludedText: string[] = [
   'intropost',
   'nft',
   'osréalacha',
+  'osrčju',
   'OSRFood',
   'pathfinder',
   'promosky',
