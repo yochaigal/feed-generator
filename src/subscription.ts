@@ -4,6 +4,11 @@ import {
 } from './lexicon/types/com/atproto/sync/subscribeRepos'
 import { FirehoseSubscriptionBase, getOpsByType } from './util/subscription'
 import fs from 'fs'
+import dotenv from 'dotenv' // make sure to load that .env!
+dotenv.config()
+
+const bannedUsersFile = process.env.BANNED_USERS_FILE || './bannedUsers.json' // fill out in .env
+let bannedUsers: string[] = [];
 
 const excludedText: string[] = [
   '1 like',
@@ -83,8 +88,6 @@ const prohibitedUrls: string[] = [
 ]
 
 // Load banned DIDs
-const bannedUsersFile = './bannedUsers.json'
-let bannedUsers: string[] = []
 try {
   bannedUsers = JSON.parse(fs.readFileSync(bannedUsersFile, 'utf8'))
 } catch (err) {
