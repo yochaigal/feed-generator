@@ -79,6 +79,7 @@ const matchPatterns: RegExp[] = [
 const prohibitedUrls: string[] = [
   'https://osr.statisticsauthority.gov.uk',
   'osr.statisticsauthority.gov.uk',
+  'osr.org',
 ]
 
 // Load banned DIDs
